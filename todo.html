@@ -6,25 +6,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>오늘의 투두</title>
+
+    <style>
+        #title {
+            color: blue;
+            text-decoration: underline;
+        }
+
+        .divBox {
+            /* background-color: aqua; */
+            border: 1px black solid;
+            border-radius: 10px;
+
+            margin: 1em;
+            padding: 2em;
+        }
+
+        button:hover {
+            background-color: orange;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>오늘 할 일</h1>
-    <div>
+    <h1 id="title">오늘 할 일</h1>
+    <div class="divBox">
         <h3>고양이 밥주기</h3>
-        <h4>고양이 물, 사료 챙겨주기</h4>
+        <p>고양이 물, 사료 챙겨주기</p>
         <button>완료</button>
     </div>
 
-    <div>
+    <div class="divBox">
         <h3>장보기</h3>
-        <h4>토마토, 계란, 초코렛 사기</h4>
+        <p>토마토, 계란, 초코렛 사기</p>
         <button>완료</button>
     </div>
 
-    <div>
+    <div class="divBox">
         <h3>코딩하기</h3>
-        <h4>리액트 강의 1주차 듣기</h4>
+        <p>리액트 강의 1주차 듣기</p>
         <button>완료</button>
     </div>
 
