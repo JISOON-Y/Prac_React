@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React W1 homework</title>
+</head>
+
+<body>
+    <style>
+        #title {
+            color: orange;
+            text-decoration: underline;
+        }
+
+        .wrap {
+            /* border: 1px solid #eee; */
+            display: flex;
+            align-items: center;
+        }
+
+        .todo-card {
+            border: 1px solid #eee;
+            padding: 2em;
+            margin: 1em;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100px;
+        }
+
+        button:hover {
+            background-color: black;
+            color: white
+        }
+    </style>
+
+    <h1 id="title">오늘 할 일</h1>
+    <div class="wrap">
+        <div class="card-list">
+            <!-- <div class="todo-card">
+                <h3>고양이 밥주기</h3>
+                <p>고양이 물, 사료 챙겨주기</p>
+                <button>완료</button>
+            </div>
+            <div class="todo-card">
+                <h3>장보기</h3>
+                <p>토마토, 계란, 초코렛 사기</p>
+                <button>완료</button>
+            </div> -->
+        </div>
+        <div class="add-card">
+            <input id="add-text" />
+            <button onClick="addTodo()">추가하기</button>
+        </div>
+    </div>
+    <script>
+        // compTodo 함수 실행 시 e(event)객체 포함하여 동작(사용 시 파라미터 값 생략해도 객체 인식)
+        function compTodo(e) {
+            console.log("완료했지롱")
+            // e 객체
+            console.log(e)
+            // e 객체의 자기자신
+            console.log(e.target)
+            // e 객체의 부모태그
+            console.log(e.target.parentElement)
+            // 눌렀을 때, 속성을 바꿔주기 위해서 누른 객체(btn)를 찾고(event객체 사용), 바꾸려고 하는 엘리먼트 찾기(부모)
+            e.target.parentElement.style.backgroundColor = "orange";
+        }
+
+        function addTodo() {
+            // 추가할 엘리먼트 생성
+            const new_todo = document.createElement("div")
+
+            // 엘리먼트에 클래스 이름 생성
+            new_todo.className = "todo-card"
+
+            // 엘리먼트 안에 필요한 텍스트와 버튼 생성 - 내용 넣어주기
+            const title = document.createElement("h3")
+            title.textContent = document.getElementById("add-text").value
+            const btn = document.createElement("button")
+            btn.textContent = "완료"
+
+            // 버튼을 눌렀을 때, compTodo함수 실행
+            btn.addEventListener("click", compTodo);
+
+            // div에 title/btn 붙이기
+            new_todo.appendChild(title)
+            new_todo.appendChild(btn)
+
+            // 원하는 영역(card-list)에 엘리먼트 붙이기
+            document.getElementsByClassName("card-list")[0].appendChild(new_todo)
+        }
+    </script>
+</body>
+
+</html>
