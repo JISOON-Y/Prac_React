@@ -18,6 +18,8 @@ class App extends React.Component {
     console.log(this.state.list);
     return (
       <div className="App">
+        {/* 컴포넌트 넣어주기 */}
+        {/* <컴포넌트 명 [props명]={넘겨줄 것(데이터)} */}
         <BucketList listA={this.state.list} />
       </div>
     )
