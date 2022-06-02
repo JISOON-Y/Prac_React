@@ -15,12 +15,13 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.list);
+    // console.log(this.state.list);
     return (
       <div className="App">
+        <h1>내 버킷 리스트</h1>
         {/* 컴포넌트 넣어주기 */}
         {/* <컴포넌트 명 [props명]={넘겨줄 것(데이터)} */}
-        <BucketList listA={this.state.list} />
+        <BucketList list={this.state.list} />
       </div>
     )
   }
