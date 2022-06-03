@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 // import './App.css';
-// import './style.css';
+import './style.css';
 import styled from 'styled-components';
 import React from 'react';
 import BucketList from './BucketList';
@@ -21,16 +21,13 @@ class App extends React.Component {
     return (
       <div className="App">
         {/* style도 컴포넌트이기때문에 props 줄 수 있음 */}
-        <MyStyled>
-          <p>im here~!</p>
-        </MyStyled>
-        {/* <div className='container'>
-          <h1>내 버킷 리스트</h1>
-          <hr className='line' />
+        <Container>
+          <Title>내 버킷 리스트</Title>
+          <Line />
           {/* 컴포넌트 넣어주기 */}
-        {/* <컴포넌트 명 [props명]={넘겨줄 것(데이터)} */}
-        {/* <BucketList list={this.state.list} /> */}
-        {/* </div> */}
+          {/* <컴포넌트 명 [props명]={넘겨줄 것(데이터)} */}
+          <BucketList list={this.state.list} />
+        </Container>
       </div>
     )
   }
@@ -47,20 +44,26 @@ class App extends React.Component {
 // }
 
 // 스타일 객체 만들기
-const MyStyled = styled.div`
+const Container = styled.div`
+  background-color: white;
   width: 50vw;
-  height: 150px;
-  // background: slateblue;
-
-  // props 불러오기
-  // background-color: ${(props) => (props.bg_color)};
-  background-color: ${(props) => (props.bg_color ? "red" : "purple")};
-  p {
-    color: blue;
-  }
-  &:hover {
-    background-color: yellow;
-  }
+  max-width: 350px;
+  height: 70vh;
+  /* 흰박스 가운데 정렬 */
+  margin: auto;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 20px;
 `;
+
+const Title = styled.h1`
+  color: slateblue;
+  text-align: center;
+`;
+
+const Line = styled.hr`
+  margin: 20px 0;
+`;
+
 
 export default App;

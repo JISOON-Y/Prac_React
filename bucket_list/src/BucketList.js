@@ -1,5 +1,6 @@
 // 리액트 패키지를 불러옵니다.
 import React from 'react';
+import styled from 'styled-components';
 
 // 함수형 컴포넌트는 이렇게 쓸 수도 있고
 // function Bucketlist(props){
@@ -33,12 +34,21 @@ const BucketList = (props) => {
                 my_lists.map((list, index) => {
                     // 콘솔을 확인해봅시다 :)
                     console.log(list);
-                    return (<div className="list-item" key={index}>{list}</div>);
+                    return <ItemStyle key={index}>
+                        {list}
+                    </ItemStyle>;
                 })
             }
         </div>
     );
 }
+
+const ItemStyle = styled.div`
+    padding: 16px;
+    background-color: aliceblue;
+    margin: 14px 0;
+    border-radius: 5px;
+`;
 
 // 우리가 만든 함수형 컴포넌트를 export 해줍니다.
 // export 해주면 다른 컴포넌트에서 BucketList 컴포넌트를 불러다 쓸 수 있어요.

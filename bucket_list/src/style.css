@@ -5,31 +5,3 @@
     /* 흰 박스 중앙 정렬 */
     display: flex;
 }
-
-.container {
-    background-color: white;
-    width: 50vw;
-    max-width: 350px;
-    height: 70vh;
-    /* 흰박스 가운데 정렬 */
-    margin: auto;
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    padding: 20px;
-}
-
-.container>h1 {
-    color: slateblue;
-    text-align: center;
-}
-
-.container>.line {
-    margin: 20px 0;
-}
-
-.list-item {
-    padding: 16px;
-    background-color: aliceblue;
-    margin: 14px 0;
-    /* border-radius: 5px; */
-}
