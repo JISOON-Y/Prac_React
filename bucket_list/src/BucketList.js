@@ -33,7 +33,7 @@ const BucketList = (props) => {
                 my_lists.map((list, index) => {
                     // 콘솔을 확인해봅시다 :)
                     console.log(list);
-                    return (<div key={index}>{list}</div>);
+                    return (<div className="list-item" key={index}>{list}</div>);
                 })
             }
         </div>

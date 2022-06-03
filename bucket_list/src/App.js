@@ -1,5 +1,6 @@
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import './style.css';
 import React from 'react';
 import BucketList from './BucketList';
 // import { BucketList } from './BucketList';
@@ -18,10 +19,13 @@ class App extends React.Component {
     // console.log(this.state.list);
     return (
       <div className="App">
-        <h1>내 버킷 리스트</h1>
-        {/* 컴포넌트 넣어주기 */}
-        {/* <컴포넌트 명 [props명]={넘겨줄 것(데이터)} */}
-        <BucketList list={this.state.list} />
+        <div className='container'>
+          <h1>내 버킷 리스트</h1>
+          <hr className='line' />
+          {/* 컴포넌트 넣어주기 */}
+          {/* <컴포넌트 명 [props명]={넘겨줄 것(데이터)} */}
+          <BucketList list={this.state.list} />
+        </div>
       </div>
     )
   }
