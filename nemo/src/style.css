@@ -1,0 +1,8 @@
+.App {
+    background-color: #eee;
+    height: 100vh;
+    width: 100vw;
+    /* 흰 박스 중앙 정렬 */
+    display: flex;
+    flex-direction: column;
+}
