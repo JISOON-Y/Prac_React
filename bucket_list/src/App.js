@@ -14,9 +14,16 @@ class App extends React.Component {
     this.state = {
       list: ["영화관 가기", "매일 책읽기", "수영 배우기"],
     }
+
+    this.text = React.createRef();
+  }
+
+  componentDidMount() {
+    console.log(this.text)
   }
 
   render() {
+    console.log(this.text.current)
     // console.log(this.state.list);
     return (
       <div className="App">
@@ -28,6 +35,14 @@ class App extends React.Component {
           {/* <컴포넌트 명 [props명]={넘겨줄 것(데이터)} */}
           <BucketList list={this.state.list} />
         </Container>
+
+        <div>
+          {/* onChange(): 입력 값이 변했을 때, 호출되는 함수 */}
+          <input type="text" ref={this.text}
+            onChange={() => {
+              console.log(this.text.current.value)
+            }} />
+        </div>
       </div>
     )
   }
