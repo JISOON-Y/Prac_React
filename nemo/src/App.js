@@ -1,4 +1,5 @@
 import React from 'react';
+import Nemo from './Nemo';
 
 class App extends React.Component {
   constructor(props) {
@@ -28,11 +29,13 @@ class App extends React.Component {
   render() {
     // 배열 만들기
     const nemoList = Array.from({ length: this.state.count }, (nemo, idx) => { return idx });
-    console.log(nemoList);
-    console.log(this.state)
+    // console.log(nemoList);
+    // console.log(this.state)
 
     return (
       <div className='App'>
+        <Nemo />
+
         {nemoList.map((nemo, idx) => {
           return (
             <div key={idx}
