@@ -1,66 +1,87 @@
-import React from 'react';
-import Nemo from './Nemo';
+import React from "react";
+import BucketList from "./BucketList";
+// import "./style.css";
+import styled from "styled-components";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
+    // 배열의 초기값 설정
     this.state = {
-      count: 3,
+      list: ["영화관 가기", "매일 책읽기", "수영 배우기"],
     };
+
+    // input창에 쓴 텍스트의 돔요소 꺼내오기
+    this.text = React.createRef();
   }
 
-  componentDidMount() { }
-
-  // 버튼 클릭 시, 동작하는 함수
-  addNemo = () => {
-    this.setState({ count: this.state.count + 1 });
+  componentDidMount() {
   }
 
-  removeNemo = () => {
-    if (this.state.count > 0) {
-      this.setState({ count: this.state.count - 1 });
-    } else {
-      window.alert("네모가 없어요!");
-    }
-  }
+  addBucket = () => {
+    console.log(this.text.current.value);
 
+    const newBucket = this.text.current.value;
+    // 기존 배열에 새로운 값을 추가 (스프레드 문법 활용)
+    this.setState({ list: [...this.state.list, newBucket] })
+  }
 
   render() {
-    // 배열 만들기
-    const nemoList = Array.from({ length: this.state.count }, (nemo, idx) => { return idx });
-    // console.log(nemoList);
-    // console.log(this.state)
-
     return (
-      <div className='App'>
-        <Nemo />
+      <AppWrap>
+        <Container>
+          <Title>내 버킷리스트</Title>
+          <Line />
+          <BucketList list={this.state.list} />
+        </Container>
 
-        {nemoList.map((nemo, idx) => {
-          return (
-            <div key={idx}
-              style={{
-                width: "150px",
-                height: "150px",
-                backgroundColor: "#ddd",
-                margin: "10px"
-              }}>
-              nemo
-            </div>
-          )
-        })}
-
-        <div>
-          <button onClick={() => {
-            this.addNemo();
-          }}>하나 추가</button>
-          <button onClick={this.removeNemo}>하나 빼기</button>
-        </div>
-      </div>
-    )
+        <InputContainer>
+          <input type="text" ref={this.text} />
+          <button onClick={this.addBucket}>추가하기</button>
+        </InputContainer>
+      </AppWrap>
+    );
   }
 }
 
+const AppWrap = styled.div`
+background-color: #eee;
+height: 100vh;
+width: 100vw;
+// 흰 박스 중앙 정렬
+display: flex;
+flex-direction: column;
+`;
 
+const Container = styled.div`
+background-color: #fff;
+width: 50vw;
+max-width: 350px;
+margin: auto;
+height: 80vh;
+padding: 16px;
+border: 1px solid #ddd;
+border-radius: 5px;
+`;
+
+const InputContainer = styled.div`
+background-color: #fff;
+width: 50vw;
+max-width: 350px;
+margin: auto;
+padding: 16px;
+border: 1px solid #ddd;
+border-radius: 5px;
+`;
+
+const Title = styled.h1`
+color: slateblue;
+text-align: center;
+`;
+
+const Line = styled.hr`
+margin: 16px 0px;
+`;
 
 export default App;
