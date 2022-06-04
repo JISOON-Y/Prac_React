@@ -24,9 +24,21 @@ const BucketList = (props) => {
     // const my_lists = list;
     const my_lists = props.list;
 
+    // Ref 사용(함수형-hook)
+    // React.useRef(초기값)
+    const my_wrap = React.useRef(1);
+
+    // 윈도우 내장함수 / 두 번째 인자만큼의 시간이 지나면, 첫 번째 인자로 들어온 함수를 실행
+    window.setTimeout(() => {
+        console.log(my_wrap)
+    }, 1000);
+
+
+    console.log(my_wrap)
+
     // 컴포넌트가 뿌려줄 ui 요소(리엑트 엘리먼트라고 불러요.)를 반환해줍니다.
     return (
-        <div>
+        <div ref={my_wrap}>
             {
                 // js의 내장 함수 중 하나인 map입니다. 리스트의 갯수만큼 => 오른쪽 구문을 반복해요. 
                 // 자세한 사용법은 아래 링크를 확인해주세요.
