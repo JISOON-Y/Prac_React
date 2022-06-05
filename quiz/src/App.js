@@ -11,7 +11,6 @@ function App() {
       <Start name={name} />
     </AppStyle>
   )
-
 }
 
 const AppStyle = styled.div`

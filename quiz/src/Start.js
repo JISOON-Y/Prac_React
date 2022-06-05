@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 const Start = (props) => {
     console.log(props)
-    // 입력값 
 
     return (
         <Container>
