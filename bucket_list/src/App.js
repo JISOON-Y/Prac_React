@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import BucketList from './BucketList';
 import Detail from './Detail';
+import NotFound from './NotFound';
 
 function App() {
   const [list, setList] = React.useState(["영화관 가기", "매일 책읽기", "수영 배우기"]);
@@ -24,6 +25,7 @@ function App() {
           {/* <컴포넌트 명 [props명]={넘겨줄 것(데이터)} */}
           <Route path='/' element={<BucketList list={list} />} />
           <Route path="/detail" element={<Detail />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
 
       </Container>
