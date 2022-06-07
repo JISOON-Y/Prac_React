@@ -1,28 +1,24 @@
 import React from 'react';
-import img from './dev_soon.png';
+import img from './notfound.png';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
 
-const Start = (props) => {
-    console.log(props)
-
+const NotFound = () => {
+    // console.log(props)
     const nav = useNavigate();
-    const goQuiz1 = () => { nav('/q1') };
+    const goMain = () => { nav('/') };
 
     return (
         <Container>
             <ImgStyle src={img} />
 
             <DescStyle>
-                나는 <PointStyle>{props.name}</PointStyle>에 대해
-                <br />얼마나 알고 있을까?
+                잘못된 경로 접근입니다! <br />주소를 한번 더 확인해주세요 :)
             </DescStyle>
 
-            <InputStyle type="text" placeholder='내 이름' />
-
-            <ButtonStyle onClick={goQuiz1}>
-                시작하기
+            <ButtonStyle onClick={goMain}>
+                메인으로 가기
             </ButtonStyle>
         </Container >
     )
@@ -50,25 +46,9 @@ text-align: center;
 // margin: 18px;
 `;
 
-const PointStyle = styled.span`
-background-color: #ffe17c;
-padding: 5px 10px;
-border-radius: 30px;
-`;
-
-const InputStyle = styled.input`
-background-color: #eee;
-width: 100%;
-border-radius: 100px;
-border: 0;
-font-size: 18px;
-font-weight: bold;
-padding: 16px;
-`;
-
 const ButtonStyle = styled.button`
 background-color: slateblue;
-margin: 30px;
+margin: 14px;
 padding: 18px 48px;
 border: 0;
 border-radius: 100px;
@@ -78,4 +58,4 @@ font-size: 18px;
 box-shadow: 0px 2px 8px darkgray;
 `;
 
-export default Start;
+export default NotFound;

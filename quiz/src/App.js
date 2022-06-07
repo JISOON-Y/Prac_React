@@ -6,6 +6,8 @@ import Quiz2 from './Quiz2';
 import Quiz3 from './Quiz3';
 import Quiz4 from './Quiz4';
 import Score from './Score';
+import NotFound from './NotFound';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   // 입력할 이름의 상태 관리
@@ -13,12 +15,15 @@ function App() {
 
   return (
     <AppStyle>
-      <Start name={name} />
-      <Quiz1 name={name} />
-      <Quiz2 name={name} />
-      <Quiz3 name={name} />
-      <Quiz4 name={name} />
-      <Score name={name} />
+      <Routes>
+        <Route path='/' element={<Start name={name} />} />
+        <Route path='/q1' element={<Quiz1 name={name} />} />
+        <Route path='/q2' element={<Quiz2 name={name} />} />
+        <Route path='/q3' element={<Quiz3 name={name} />} />
+        <Route path='/q4' element={<Quiz4 name={name} />} />
+        <Route path='/score' element={<Score name={name} />} />
+        <Route path='/*' element={<NotFound />} />
+      </Routes>
     </AppStyle>
   )
 }

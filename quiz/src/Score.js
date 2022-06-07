@@ -1,14 +1,16 @@
 import React from 'react';
-import img from './dev_soon.png';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 
 const Score = (props) => {
     console.log(props)
 
+    const nav = useNavigate();
+    const goMain = () => { nav('/') };
+
     return (
         <Container>
-            {/* <ImgStyle src={img} /> */}
 
             <DescStyle>
                 <PointStyle>{props.name}</PointStyle>퀴즈에 대한
@@ -17,7 +19,7 @@ const Score = (props) => {
                 <SubText>이 정도면 아주 친한 친구 사이!<br />앞으로도 더 친하게 지내요:)</SubText>
             </DescStyle>
 
-            <ButtonStyle>
+            <ButtonStyle onClick={goMain}>
                 다시하기
             </ButtonStyle>
         </Container >
@@ -34,11 +36,6 @@ padding: 14px;
 box-sizing: border-box;
 `;
 
-const ImgStyle = styled.img`
-width: 54vw;
-margin: 16px;
-`;
-
 const DescStyle = styled.h1`
 font-size: 1.5em;
 line-height: 1.8;
@@ -52,7 +49,7 @@ padding: 5px 10px;
 border-radius: 30px;
 `;
 
-const ScoreStyle = styled.h1`
+const ScoreStyle = styled.p`
 font-size: 1.8em;
 margin: 32px 0 0 0;
 `;
@@ -61,16 +58,6 @@ const SubText = styled.p`
 font-size: 0.7em;
 line-height: 1.4;
 margin: 10px 0 28px 0;
-`;
-
-const InputStyle = styled.input`
-background-color: #eee;
-width: 100%;
-border-radius: 100px;
-border: 0;
-font-size: 18px;
-font-weight: bold;
-padding: 16px;
 `;
 
 const ButtonStyle = styled.button`

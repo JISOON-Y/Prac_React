@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import img from './quiz3.png';
+import { useNavigate } from "react-router-dom";
 
 const Quiz3 = (props) => {
     console.log(props);
+
+    const nav = useNavigate();
+    const goQuiz4 = () => { nav('/q4') };
 
     return (
         <Container>
@@ -15,8 +19,8 @@ const Quiz3 = (props) => {
                 <br /><PointStyle>배드민턴</PointStyle>이다.
             </DescStyle>
             <ButtonContainer>
-                <ButtonStyle>O</ButtonStyle>
-                <ButtonStyle>X</ButtonStyle>
+                <ButtonStyle onClick={goQuiz4}>O</ButtonStyle>
+                <ButtonStyle onClick={goQuiz4}>X</ButtonStyle>
             </ButtonContainer>
         </Container >
     )
