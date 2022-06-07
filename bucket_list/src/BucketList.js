@@ -2,18 +2,30 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // {list}로 데이터 불러올 수 있음
 const BucketList = (props) => {
-    console.log(props);
-    // {list}로 불러올 경우,
+    // console.log(props);
+
+    // {list}로 state불러올 경우,
     // const my_lists = list;
-    const my_lists = props.list;
+
+    // props로 state불러올 경우,
+    // const my_lists = props.list;
+
+    // 리덕스에서 데이터 가져오기
+    // useSelector((리덕스에 저장되어있는 전체 데이터) => 리턴값)
+    const my_lists = useSelector((state) => state.bucket.list);
+    console.log(my_lists);
+
     const navigate = useNavigate();
+
 
     // Ref 사용(함수형-hook)
     // React.useRef(초기값)
     // const my_wrap = React.useRef(1);
+
 
     // 컴포넌트가 뿌려줄 ui 요소(리엑트 엘리먼트라고 불러요.)를 반환해줍니다.
     return (
@@ -21,7 +33,7 @@ const BucketList = (props) => {
             {my_lists.map((list, idx) => {
                 return (
                     <ItemStyle className="list_item" key={idx} onClick={() => {
-                        navigate("/detail");
+                        navigate("/detail/" + idx);
                     }}>
                         {list}
                     </ItemStyle>

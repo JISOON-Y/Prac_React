@@ -2,6 +2,8 @@
 import styled from 'styled-components';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { createBucket } from './redux/modules/bucket';
 
 import BucketList from './BucketList';
 import Detail from './Detail';
@@ -11,8 +13,15 @@ function App() {
   const [list, setList] = React.useState(["영화관 가기", "매일 책읽기", "수영 배우기"]);
   const text = React.useRef(null);
 
+  // 리덕스에서 데이터 수정한 값 불러오기
+  const dispatch = useDispatch();
+
   const addBucketList = () => {
-    setList([...list, text.current.value]);
+    // setList([...list, text.current.value]);
+
+    // dispatch()로 action일으키기
+    // createBucket + () = 생성 함수 '바로' 실행
+    dispatch(createBucket(text.current.value));
   }
 
   return (
@@ -24,7 +33,7 @@ function App() {
         <Routes>
           {/* <컴포넌트 명 [props명]={넘겨줄 것(데이터)} */}
           <Route path='/' element={<BucketList list={list} />} />
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/detail/:idx" element={<Detail />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
 
