@@ -1,7 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { removeBucket } from "./redux/modules/bucket";
 
 const Detail = (props) => {
 
@@ -17,9 +19,19 @@ const Detail = (props) => {
     console.log(bucket_list);
     console.log(bucket_list[bucket_idx]);
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     return (
-        // 리덕스에서 불러온 값 넣어주기
-        <FontStyle>{bucket_list[bucket_idx]}</FontStyle>
+        <div>
+            {/* 리덕스에서 불러온 값 넣어주기 */}
+            <FontStyle>{bucket_list[bucket_idx]}</FontStyle>
+            <button onClick={() => {
+                dispatch(removeBucket(bucket_idx));
+                navigate("/");
+            }}>삭제하기</button>
+        </div>
+
     );
 }
 
