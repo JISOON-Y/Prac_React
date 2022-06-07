@@ -3,22 +3,22 @@ import img from './dev_soon.png';
 import styled from 'styled-components';
 
 
-const Start = (props) => {
+const Score = (props) => {
     console.log(props)
 
     return (
         <Container>
-            <ImgStyle src={img} />
+            {/* <ImgStyle src={img} /> */}
 
             <DescStyle>
-                나는 <PointStyle>{props.name}</PointStyle>에 대해
-                <br />얼마나 알고 있을까?
+                <PointStyle>{props.name}</PointStyle>퀴즈에 대한
+                <br />내 점수는?
+                <ScoreStyle><PointStyle>100</PointStyle>점!</ScoreStyle>
+                <SubText>이 정도면 아주 친한 친구 사이!<br />앞으로도 더 친하게 지내요:)</SubText>
             </DescStyle>
 
-            <InputStyle type="text" placeholder='내 이름' />
-
             <ButtonStyle>
-                시작하기
+                다시하기
             </ButtonStyle>
         </Container >
     )
@@ -52,6 +52,17 @@ padding: 5px 10px;
 border-radius: 30px;
 `;
 
+const ScoreStyle = styled.h1`
+font-size: 1.8em;
+margin: 32px 0 0 0;
+`;
+
+const SubText = styled.p`
+font-size: 0.7em;
+line-height: 1.4;
+margin: 10px 0 28px 0;
+`;
+
 const InputStyle = styled.input`
 background-color: #eee;
 width: 100%;
@@ -64,7 +75,7 @@ padding: 16px;
 
 const ButtonStyle = styled.button`
 background-color: slateblue;
-margin: 30px;
+// margin: 30px;
 padding: 18px 48px;
 border: 0;
 border-radius: 100px;
@@ -74,4 +85,4 @@ font-size: 18px;
 box-shadow: 0px 2px 8px darkgray;
 `;
 
-export default Start;
+export default Score;
