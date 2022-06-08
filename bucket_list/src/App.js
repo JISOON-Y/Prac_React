@@ -22,7 +22,7 @@ function App() {
 
     // dispatch()로 action일으키기
     // createBucket + () = 생성 함수 '바로' 실행
-    dispatch(createBucket(text.current.value));
+    dispatch(createBucket({ text: text.current.value, completed: false }));
   }
 
   return (
@@ -44,7 +44,11 @@ function App() {
       <SubContainer>
         <input type="text" ref={text} />
         <button onClick={addBucketList}>추가하기</button>
+        <button onClick={() => {
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        }}>상단으로 이동</button>
       </SubContainer>
+
     </AppStyle>
   );
 }
