@@ -32,7 +32,7 @@ const BucketList = (props) => {
         <ListStyle>
             {my_lists.map((list, idx) => {
                 return (
-                    <ItemStyle className="list_item" key={idx} onClick={() => {
+                    <ItemStyle completed={list.completed} className="list_item" key={idx} onClick={() => {
                         navigate("/detail/" + idx);
                     }}>
                         {list.text}
@@ -51,7 +51,8 @@ const ListStyle = styled.div`
 
 const ItemStyle = styled.div`
     padding: 16px;
-    background-color: aliceblue;
+    background-color: ${(props) => (props.completed ? "slateblue" : "aliceblue")};
+    color: ${(props) => (props.completed ? "white" : "black")};
     margin: 8px 0;
     border-radius: 5px;
 `;

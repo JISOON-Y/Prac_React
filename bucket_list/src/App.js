@@ -8,6 +8,7 @@ import { createBucket } from './redux/modules/bucket';
 import BucketList from './BucketList';
 import Detail from './Detail';
 import NotFound from './NotFound';
+import Progress from './Progress';
 
 function App() {
   const [list, setList] = React.useState(["영화관 가기", "매일 책읽기", "수영 배우기"]);
@@ -28,6 +29,7 @@ function App() {
     <AppStyle>
       <Container>
         <Title>내 버킷 리스트</Title>
+        <Progress />
         <Line />
 
         <Routes>
