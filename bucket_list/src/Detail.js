@@ -3,21 +3,18 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { removeBucket } from "./redux/modules/bucket";
+import { removeBucket, updateBucket } from "./redux/modules/bucket";
 
 const Detail = (props) => {
 
     // url 경로의 params값 불러오기
     const params = useParams();
-    console.log(params);
 
     // params로 받아온 list의 index 값
     const bucket_idx = params.idx;
 
     // 리덕스에서 bucket_list의 데이터 가져오기
     const bucket_list = useSelector((state) => state.bucket.list);
-    console.log(bucket_list);
-    console.log(bucket_list[bucket_idx]);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -25,11 +22,15 @@ const Detail = (props) => {
     return (
         <div>
             {/* 리덕스에서 불러온 값 넣어주기 */}
-            <FontStyle>{bucket_list[bucket_idx]}</FontStyle>
+            <FontStyle>{bucket_list[bucket_idx].text}</FontStyle>
             <button onClick={() => {
                 dispatch(removeBucket(bucket_idx));
                 navigate("/");
             }}>삭제하기</button>
+
+            <button onClick={() => {
+                dispatch(updateBucket(bucket_idx));
+            }}>완료하기</button>
         </div>
 
     );

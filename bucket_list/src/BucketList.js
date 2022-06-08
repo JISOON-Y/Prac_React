@@ -35,7 +35,7 @@ const BucketList = (props) => {
                     <ItemStyle className="list_item" key={idx} onClick={() => {
                         navigate("/detail/" + idx);
                     }}>
-                        {list}
+                        {list.text}
                     </ItemStyle>
                 );
             })}
