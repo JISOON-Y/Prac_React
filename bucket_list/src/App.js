@@ -1,9 +1,10 @@
 // import './style.css';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { createBucket } from './redux/modules/bucket';
+import img from './quiz2.png';
 
 import BucketList from './BucketList';
 import Detail from './Detail';
@@ -28,9 +29,12 @@ function App() {
   return (
     <AppStyle>
       <Container>
-        <Title>내 버킷 리스트</Title>
+        <ImgAlign>
+          <ImgStyle src={img} />
+        </ImgAlign>
+        <Title><PointStyle>양지순</PointStyle>의 버킷 리스트</Title>
         <Progress />
-        <Line />
+        {/* <Line /> */}
 
         <Routes>
           {/* <컴포넌트 명 [props명]={넘겨줄 것(데이터)} */}
@@ -42,11 +46,14 @@ function App() {
       </Container>
 
       <SubContainer>
-        <input type="text" ref={text} />
-        <button onClick={addBucketList}>추가하기</button>
-        <button onClick={() => {
-          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-        }}>상단으로 이동</button>
+        <FocusStyle>
+          <InputStyle type="text" placeholder='버킷 리스트 작성하기' ref={text} />
+          <ButtonStyle onClick={addBucketList}>추가하기</ButtonStyle>
+          {/* <button onClick={() => {
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }}>상단으로 이동</button> */}
+        </FocusStyle>
+
       </SubContainer>
 
     </AppStyle>
@@ -62,6 +69,28 @@ const AppStyle = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+const ImgAnimation = keyframes`
+0% {
+  margin-top: 0px;
+}
+100% {
+  margin-top: 10px;
+}
+`
+
+const ImgAlign = styled.div`
+  // 이미지 가운데 정렬 (이미지 = 인라인 요소!)
+  text-align: center;
+  height: 220px;
+`;
+
+const ImgStyle = styled.img`
+width: 200px;
+animation: ${ImgAnimation} 1s linear 0s infinite alternate;
+
+`;
+
 const Container = styled.div`
   background-color: white;
   width: 50vw;
@@ -71,12 +100,22 @@ const Container = styled.div`
   margin: 50px auto 10px;
   border: 1px solid lightgray;
   border-radius: 10px;
-  padding: 20px;
+  padding: 16px 20px 20px 20px;
+  overflow: auto;
 `;
 
 const Title = styled.h1`
-  color: slateblue;
+  font-size: 24px;
+  // color: slateblue;
+  margin: 14px 0 30px 0;
   text-align: center;
+`;
+
+const PointStyle = styled.span`
+background-color: slateblue;
+color: #fff;
+padding: 5px 10px;
+border-radius: 30px;
 `;
 
 const Line = styled.hr`
@@ -92,6 +131,37 @@ const SubContainer = styled.div`
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 20px;
+`;
+
+const FocusStyle = styled.div`
+& input:focus {
+    outline: none;
+    border: 2px solid slateblue;
+  }
+
+  display: flex;
+`;
+
+const InputStyle = styled.input`
+background-color: #eee;
+width: 18em;
+border-radius: 50px;
+border: 0;
+font-size: 14px;
+padding: 12px;
+margin-right: 12px;
+`;
+
+const ButtonStyle = styled.button`
+background-color: slateblue;
+width: 6em;
+color: #fff;
+font-weight: bold;
+border: none;
+padding: 12px;
+border-radius: 50px;
+// flex 자식 요소 중에 하나만 우측 정렬
+margin-left: auto;
 `;
 
 

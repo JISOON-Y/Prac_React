@@ -50,11 +50,12 @@ const ListStyle = styled.div`
 `;
 
 const ItemStyle = styled.div`
-    padding: 16px;
+    padding: 14px;
     background-color: ${(props) => (props.completed ? "slateblue" : "aliceblue")};
     color: ${(props) => (props.completed ? "white" : "black")};
-    margin: 8px 0;
-    border-radius: 5px;
+    margin: 6px 0;
+    font-size : 14px;
+    border-radius: 30px;
 `;
 
 // 우리가 만든 함수형 컴포넌트를 export 해줍니다.
