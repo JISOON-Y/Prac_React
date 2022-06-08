@@ -46,13 +46,13 @@ function App() {
       </Container>
 
       <SubContainer>
-        <FocusStyle>
-          <InputStyle type="text" placeholder='버킷 리스트 작성하기' ref={text} />
-          <ButtonStyle onClick={addBucketList}>추가하기</ButtonStyle>
-          {/* <button onClick={() => {
+        {/* <Input> */}
+        <input type="text" placeholder='버킷 리스트 작성하기' ref={text} />
+        <button onClick={addBucketList}>추가하기</button>
+        {/* <button onClick={() => {
               window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
             }}>상단으로 이동</button> */}
-        </FocusStyle>
+        {/* </Input> */}
 
       </SubContainer>
 
@@ -100,8 +100,8 @@ const Container = styled.div`
   margin: 50px auto 10px;
   border: 1px solid lightgray;
   border-radius: 10px;
-  padding: 16px 20px 20px 20px;
-  overflow: auto;
+  padding: 12px 20px 20px 20px;
+  // overflow: auto;
 `;
 
 const Title = styled.h1`
@@ -131,38 +131,33 @@ const SubContainer = styled.div`
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-`;
+  display: flex;
 
-const FocusStyle = styled.div`
-& input:focus {
-    outline: none;
-    border: 2px solid slateblue;
+  & > * {
+    padding: 12px;
+    border: 0;
+    border-radius: 50px;
   }
 
-  display: flex;
-`;
+  & input {
+    background-color: #eee;
+    width: 18em;
+    font-size: 14px;
+    margin-right: 12px;
+  }
 
-const InputStyle = styled.input`
-background-color: #eee;
-width: 18em;
-border-radius: 50px;
-border: 0;
-font-size: 14px;
-padding: 12px;
-margin-right: 12px;
-`;
+  & input:focus {
+    outline: none;
+    border: 1px solid slateblue;
+  }
 
-const ButtonStyle = styled.button`
-background-color: slateblue;
-width: 6em;
-color: #fff;
-font-weight: bold;
-border: none;
-padding: 12px;
-border-radius: 50px;
-// flex 자식 요소 중에 하나만 우측 정렬
-margin-left: auto;
+  & button {
+    background-color: slateblue;
+    width: 6em;
+    color: #fff;
+    font-weight: bold;
+    margin-left: auto;
+  }
 `;
-
 
 export default App;

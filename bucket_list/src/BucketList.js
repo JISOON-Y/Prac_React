@@ -46,7 +46,8 @@ const BucketList = (props) => {
 const ListStyle = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 200px;
+    overflow: auto;
 `;
 
 const ItemStyle = styled.div`
