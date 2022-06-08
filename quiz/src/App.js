@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Start from './Start';
-import Quiz1 from './Quiz1';
-import Quiz2 from './Quiz2';
-import Quiz3 from './Quiz3';
-import Quiz4 from './Quiz4';
+import Quiz from './Quiz';
 import Score from './Score';
 import NotFound from './NotFound';
 import { Route, Routes } from 'react-router-dom';
@@ -17,10 +14,10 @@ function App() {
     <AppStyle>
       <Routes>
         <Route path='/' element={<Start name={name} />} />
-        <Route path='/q1' element={<Quiz1 name={name} />} />
-        <Route path='/q2' element={<Quiz2 name={name} />} />
-        <Route path='/q3' element={<Quiz3 name={name} />} />
-        <Route path='/q4' element={<Quiz4 name={name} />} />
+        <Route path='/q' element={<Quiz name={name} />} />
+        {/* <Route path='/q2' element={<Quiz2 name={name} />} /> */}
+        {/* <Route path='/q3' element={<Quiz3 name={name} />} /> */}
+        {/* <Route path='/q4' element={<Quiz4 name={name} />} /> */}
         <Route path='/score' element={<Score name={name} />} />
         <Route path='/*' element={<NotFound />} />
       </Routes>

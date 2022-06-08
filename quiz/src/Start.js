@@ -2,13 +2,17 @@ import React from 'react';
 import img from './dev_soon.png';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { createName } from './redux/modules/user';
 
 
 const Start = (props) => {
-    console.log(props)
+
+    const name_ref = React.useRef(null);
+    const dispatch = useDispatch();
 
     const nav = useNavigate();
-    const goQuiz1 = () => { nav('/q1') };
+    const goQuiz1 = () => { nav('/q') };
 
     return (
         <Container>
@@ -19,9 +23,12 @@ const Start = (props) => {
                 <br />얼마나 알고 있을까?
             </DescStyle>
 
-            <InputStyle type="text" placeholder='내 이름' />
+            <InputStyle type="text" placeholder='내 이름' ref={name_ref} />
 
-            <ButtonStyle onClick={goQuiz1}>
+            <ButtonStyle onClick={() => {
+                dispatch(createName(name_ref.current.value));
+                goQuiz1();
+            }}>
                 시작하기
             </ButtonStyle>
         </Container >
