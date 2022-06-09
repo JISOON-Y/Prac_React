@@ -17,9 +17,8 @@ const Progress = (props) => {
 
     return (
         <BackgroundBar>
-            <CompletedBar width={(count / bucket_list.length) * 100 + "%"}>
-                <CirclePin width={(count / bucket_list.length) * 100 + "%"} />
-            </CompletedBar>
+            <CompletedBar width={(count / bucket_list.length) * 100 + "%"} />
+            <CirclePin width={(count / bucket_list.length) * 100 + "%"} />
         </BackgroundBar>
     );
 }
@@ -30,6 +29,8 @@ height: 10px;
 background-color: #ddd;
 border-radius: 30px;
 margin: 0 auto 20px auto;
+display: flex;
+align-items: center;
 `;
 
 const CompletedBar = styled.div`
@@ -38,7 +39,8 @@ transition: 1s;
 height: 10px;
 background-color: slateblue;
 border-radius: 30px;
-position: relative;
+
+// position: relative;
 `;
 
 const CirclePin = styled.div`
@@ -47,10 +49,12 @@ height: 12px;
 border-radius: 30px;
 background-color: #fff;
 border: 5px solid slateblue;
-position: absolute;
-top: 50%;
-left: 100%;
-transform: translate(-50%, -50%)
+margin: 0 0 0 -10px;
+
+// position: absolute;
+// top: 50%;
+// left: 100%;
+// transform: translate(-50%, -50%)
 `;
 
 
