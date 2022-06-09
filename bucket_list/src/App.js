@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { createBucket } from './redux/modules/bucket';
 import { db } from './firebase';
+import { collection, getDocs, addDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import img from './quiz2.png';
 
 import BucketList from './BucketList';
@@ -28,9 +29,27 @@ function App() {
   }
 
   // firebase store 확인
-  React.useEffect(() => {
-    console.log(db);
-  }, [])
+  React.useEffect(async () => {
+    // 1.데이터 가져오기
+    const query = await getDocs(collection(db, "bucket"));
+    // 도큐먼트 객체의 내장함수 foreach = 반복문 => 원하는 정보를 뽑아내기 위해 사용
+    query.forEach((doc) => {
+      console.log(doc.id, doc.data())
+    })
+
+    // 2.데이터 추가하기
+    addDoc(collection(db, "bucket"), { text: "test", completed: false });
+
+    // 3.데이터 수정하기 (수정할 데이터가 어떤건지 알아야함 = docRef)
+    const docRef = doc(db, "bucket", "TzOXhZORohfMDcpEF1RR");
+    updateDoc(docRef, { text: "레니게이드 사기" });
+
+    // 4.데이터 삭제하기 (삭제할 데이터가 어떤건지 알아야함 = docRef2)
+    let docRef2 = doc(db, "bucket", "xIpIKJvicyxtjEfNwGh7");
+    deleteDoc(docRef2);
+
+    // console.log(db);
+  }, []);
 
   return (
     <AppStyle>
