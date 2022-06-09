@@ -4,6 +4,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { createBucket } from './redux/modules/bucket';
+import { db } from './firebase';
 import img from './quiz2.png';
 
 import BucketList from './BucketList';
@@ -25,6 +26,11 @@ function App() {
     // createBucket + () = 생성 함수 '바로' 실행
     dispatch(createBucket({ text: text.current.value, completed: false }));
   }
+
+  // firebase store 확인
+  React.useEffect(() => {
+    console.log(db);
+  }, [])
 
   return (
     <AppStyle>
