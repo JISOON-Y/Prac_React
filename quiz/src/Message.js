@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import { createMessage } from './redux/modules/user';
 import { createRank } from './redux/modules/rank';
 import { useSelector } from 'react-redux';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from './firebase';
 
 
 const Message = (props) => {
@@ -46,6 +48,12 @@ const Message = (props) => {
                         message: message_ref.current.value
                     }
                 ))
+                const docRef = addDoc(collection(db, "ranking"), {
+                    score: totalScore,
+                    user_name: user_name,
+                    message: message_ref.current.value
+                }
+                )
                 goRank();
             }}>
                 랭킹보러가기
