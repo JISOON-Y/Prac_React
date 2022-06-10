@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addAnswer } from "./redux/modules/quiz";
+import Progress from './Progress'
 
 const Quiz = (props) => {
 
@@ -32,6 +33,7 @@ const Quiz = (props) => {
     return (
         <Container>
             <QuizTitle>{user_anwserList.length + 1}번 문제</QuizTitle>
+            <Progress />
             <ImgStyle src={quiz_list[user_anwserList.length].image} />
 
             <DescStyle>
@@ -70,15 +72,15 @@ box-sizing: border-box;
 `;
 
 const ImgStyle = styled.img`
-width: 54vw;
-margin: 16px;
+width: 48vw;
+// margin: 16px;
 `;
 
 const DescStyle = styled.h1`
 font-size: 1.5em;
 line-height: 1.8;
 text-align: center;
-// margin: 18px;
+margin: 20px 0 0 0;
 `;
 
 const PointStyle = styled.span`

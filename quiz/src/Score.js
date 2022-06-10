@@ -8,6 +8,7 @@ const Score = (props) => {
 
     const nav = useNavigate();
     const goMain = () => { nav('/') };
+    const goMessage = () => { nav('/message') };
 
     const quiz_list = useSelector(state => state.quiz.quiz_list);
     const user_anwserList = useSelector(state => state.quiz.user_answer_list);
@@ -33,11 +34,12 @@ const Score = (props) => {
 
             <ButtonStyle onClick={() => {
                 dispatch(createScore(totalScore));
+                { goMessage() }
             }}>
-                랭킹보기
+                한마디 하고 랭킹보기
             </ButtonStyle>
             <ButtonStyle2 onClick={goMain}>
-                다시하기
+                메인으로 가기
             </ButtonStyle2>
         </Container >
     )
@@ -80,7 +82,7 @@ margin: 10px 0 28px 0;
 const ButtonStyle = styled.button`
 background-color: slateblue;
 // margin: 30px;
-padding: 18px 80px;
+padding: 18px 56px;
 border: 0;
 border-radius: 100px;
 color: #fff;

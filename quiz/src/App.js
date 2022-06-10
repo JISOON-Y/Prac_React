@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Start from './Start';
 import Quiz from './Quiz';
 import Score from './Score';
+import Message from './Message';
+import Rank from './Rank';
 import NotFound from './NotFound';
 import { Route, Routes } from 'react-router-dom';
 
@@ -15,10 +17,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Start name={name} />} />
         <Route path='/q' element={<Quiz name={name} />} />
-        {/* <Route path='/q2' element={<Quiz2 name={name} />} /> */}
-        {/* <Route path='/q3' element={<Quiz3 name={name} />} /> */}
-        {/* <Route path='/q4' element={<Quiz4 name={name} />} /> */}
         <Route path='/score' element={<Score name={name} />} />
+        <Route path='/message' element={<Message name={name} />} />
+        <Route path='/rank' element={<Rank />} />
         <Route path='/*' element={<NotFound />} />
       </Routes>
     </AppStyle>

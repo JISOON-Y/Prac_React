@@ -46,7 +46,7 @@ box-sizing: border-box;
 `;
 
 const ImgStyle = styled.img`
-width: 54vw;
+width: 48vw;
 margin: 16px;
 `;
 

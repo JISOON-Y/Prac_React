@@ -4,20 +4,33 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { createMessage } from './redux/modules/user';
+import { createRank } from './redux/modules/rank';
+import { useSelector } from 'react-redux';
 
 
 const Message = (props) => {
 
     const message_ref = React.useRef(null);
     const dispatch = useDispatch();
+    const quiz_name = useSelector(state => state.quiz.quiz_name);
+
+    const user_name = useSelector(state => state.user.user_name);
 
     const nav = useNavigate();
-    // const goQuiz1 = () => { nav('/q') };
+    const goRank = () => { nav('/rank') };
+
+    const quiz_list = useSelector(state => state.quiz.quiz_list);
+    const user_anwserList = useSelector(state => state.quiz.user_answer_list);
+
+    // 점수 계산
+    const totalScore = (100 / quiz_list.length) * quiz_list.filter((q, idx) => {
+        return q.anwser === user_anwserList[idx];
+    }).length;
 
     return (
         <Container>
             <DescStyle>
-                <PointStyle>{props.name}</PointStyle>에게 한마디!
+                <PointStyle>{quiz_name}</PointStyle>에게 한마디!
             </DescStyle>
 
             <ImgStyle src={img} />
@@ -26,7 +39,14 @@ const Message = (props) => {
 
             <ButtonStyle onClick={() => {
                 dispatch(createMessage(message_ref.current.value));
-                // goQuiz1();
+                dispatch(createRank(
+                    {
+                        score: totalScore,
+                        user_name: user_name,
+                        message: message_ref.current.value
+                    }
+                ))
+                goRank();
             }}>
                 랭킹보러가기
             </ButtonStyle>

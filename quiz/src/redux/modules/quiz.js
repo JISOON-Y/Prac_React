@@ -19,6 +19,8 @@ export function addAnswer(user_answer) {
 }
 
 const initialState = {
+    quiz_name: "양지순",
+
     quiz_list: [
         { question: "양지순은 인싸중에 아싸, 아싸중에 인싸인 ISFJ이다.", anwser: true, image: img1 },
         { question: "양지순의 취미는 그림그리기이다.", anwser: false, image: img2 },
